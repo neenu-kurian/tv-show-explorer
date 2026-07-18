@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["next-env.d.ts", "src/app/**/*.ts", "src/app/**/*.tsx", "src/components/**/*.ts", "src/components/**/*.tsx", "src/hooks/**/*.ts", "src/hooks/**/*.tsx", "src/services/**/*.ts", "src/shared/**/*.ts", "src/types/**/*.ts"],
+  "exclude": ["src/main.ts", "src/App.vue", "src/router/**", "src/views/**", "src/stores/**", "src/composables/**", "tests/**"]
+}
