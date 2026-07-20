@@ -7,9 +7,8 @@ import { apiFetch } from "./http";
 
 export async function fetchCastData(
   id: number,
-  signal?: AbortSignal,
   revalidate?: number,
 ): Promise<Result<CastMember[]>> {
-  const response = await apiFetch(`${API_URL}/shows/${id}/cast`, signal, revalidate);
+  const response = await apiFetch(`${API_URL}/shows/${id}/cast`, undefined, revalidate);
   return parseWith(response, CastListDtoSchema);
 }

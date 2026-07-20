@@ -28,7 +28,7 @@ export default async function ShowDetailPage({ params }: ShowDetailPageProps) {
     );
   }
 
-  const castResult = await fetchCastData(id, undefined, 3600);
+  const castResult = await fetchCastData(id, 3600);
   const cast = castResult.ok ? castResult.data : [];
   const castError = castResult.ok ? null : getErrorMessage(castResult.error);
 

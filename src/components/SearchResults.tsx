@@ -12,7 +12,7 @@ export function SearchResults({ searchQuery, hasSearched, shows, searchError, lo
   }
 
   if (hasSearched && shows.length === 0) {
-    return <div className="text-center">No shows found matching &quot;{searchQuery}&quot;</div>;
+    return <div className="text-center">No shows found matching {searchQuery}</div>;
   }
 
   return (

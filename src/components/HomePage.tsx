@@ -1,6 +1,5 @@
 "use client";
 
-import { useMemo } from "react";
 import { SearchInput } from "@/components/SearchInput";
 import { SearchResults } from "@/components/SearchResults";
 import { ShowCatalog } from "@/components/ShowCatalog";
@@ -14,10 +13,7 @@ export function HomePage({ catalogData, error }: HomePageProps) {
   const { catalogData: sortedCatalogData, sortBy, setSortBy } = useCatalog(catalogData);
   const { searchQuery, searchLoading, hasSearched, searchError, shows, handleSearch } =
     useDebouncedSearch();
-
-  const shouldShowSearchResults = useMemo(() => {
-    return searchLoading || hasSearched || searchQuery.trim() !== "";
-  }, [hasSearched, searchLoading, searchQuery]);
+  const shouldShowSearchResults = (searchLoading || hasSearched || searchQuery.trim()) !== "";
 
   return (
     <>
