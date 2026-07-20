@@ -1,25 +1,19 @@
 "use client";
 
-import { type ReactNode, createContext, useContext, useEffect, useRef } from "react";
+import { type ReactNode, createContext, useContext, useState } from "react";
 import { useStore } from "zustand";
-import { createSearchStore, type SearchStore } from "@/stores/searchStore";
+import { createSearchStore } from "@/stores/searchStore";
+import type { SearchStore } from "@/types/store";
 
 type SearchStoreApi = ReturnType<typeof createSearchStore>;
 
 const SearchStoreContext = createContext<SearchStoreApi | null>(null);
 
 export function SearchStoreProvider({ children }: { children: ReactNode }) {
-  const storeRef = useRef<SearchStoreApi | null>(null);
-  if (!storeRef.current) {
-    storeRef.current = createSearchStore();
-  }
-
-  useEffect(() => {
-    storeRef.current?.persist.rehydrate();
-  }, []);
+  const [store] = useState(() => createSearchStore());
 
   return (
-    <SearchStoreContext.Provider value={storeRef.current}>
+    <SearchStoreContext.Provider value={store}>
       {children}
     </SearchStoreContext.Provider>
   );

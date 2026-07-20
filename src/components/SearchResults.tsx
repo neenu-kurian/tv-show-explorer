@@ -1,16 +1,8 @@
 import { AppLoader } from "@/components/AppLoader";
 import { ShowCard } from "@/components/ShowCard";
-import type { Show } from "@/types/show";
+import type { SearchResultProps } from "@/types/search";
 
-type SearchResultsProps = {
-  searchQuery: string;
-  hasSearched: boolean;
-  shows: Show[];
-  searchError: string | null;
-  loading: boolean;
-};
-
-export function SearchResults({ searchQuery, hasSearched, shows, searchError, loading }: SearchResultsProps) {
+export function SearchResults({ searchQuery, hasSearched, shows, searchError, loading }: SearchResultProps) {
   if (loading) {
     return <AppLoader message="Searching..." />;
   }

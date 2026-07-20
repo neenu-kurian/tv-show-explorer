@@ -2,20 +2,13 @@
 
 import Image from "next/image";
 import { useState } from "react";
-
-type ShowPosterProps = {
-  src?: string;
-  alt: string;
-  loading?: "lazy" | "eager";
-  className?: string;
-  children?: React.ReactNode;
-};
+import type { ShowPosterProps } from "@/types/components";
 
 export function ShowPoster({ src, alt, loading = "lazy", className, children }: ShowPosterProps) {
   const [failed, setFailed] = useState(false);
 
   if (!src || failed) {
-    return <div className={className}>{children}</div>;
+    return <div className={className ?? "relative h-full w-full"}>{children}</div>;
   }
 
   return (

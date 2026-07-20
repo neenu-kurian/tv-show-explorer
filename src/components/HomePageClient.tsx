@@ -8,24 +8,12 @@ import { SortDropdown } from "@/components/SortDropdown";
 import { useCatalog } from "@/hooks/useCatalog";
 import { useDebouncedSearch } from "@/hooks/useDebouncedSearch";
 import { sortOptions } from "@/constants";
-import type { CategorizedShows } from "@/types/show";
-
-type HomePageClientProps = {
-  catalogData: CategorizedShows;
-  error: string | null;
-};
+import type { HomePageClientProps } from "@/types/components";
 
 export function HomePageClient({ catalogData, error }: HomePageClientProps) {
-  const { catalogData: sortedCatalogData, sortBy, setSortBy, genres } = useCatalog(catalogData);
-  const {
-    searchQuery,
-    setSearchQuery,
-    searchLoading,
-    hasSearched,
-    searchError,
-    shows,
-    handleSearch,
-  } = useDebouncedSearch();
+  const { catalogData: sortedCatalogData, sortBy, setSortBy } = useCatalog(catalogData);
+  const { searchQuery, searchLoading, hasSearched, searchError, shows, handleSearch } =
+    useDebouncedSearch();
 
   const shouldShowSearchResults = useMemo(() => {
     return searchLoading || hasSearched || searchQuery.trim() !== "";
@@ -40,7 +28,7 @@ export function HomePageClient({ catalogData, error }: HomePageClientProps) {
         <div className="w-full items-center gap-16 px-5 md:flex">
           <SearchInput
             value={searchQuery}
-            onChange={setSearchQuery}
+            onChange={handleSearch}
             onSubmit={handleSearch}
             placeholder="Search for TV shows..."
           />
@@ -50,18 +38,6 @@ export function HomePageClient({ catalogData, error }: HomePageClientProps) {
             onChange={setSortBy}
             className="mt-5 md:mt-0"
           />
-          <select
-            aria-label="Filter shows by genre"
-            name="select-genre"
-            className="w-full cursor-pointer appearance-none border-none bg-transparent py-2.5 pr-6 text-sm font-medium text-gray-900 focus-ring"
-            defaultValue=""
-          >
-            {genres.map((genre) => (
-              <option key={genre} value={genre}>
-                {genre}
-              </option>
-            ))}
-          </select>
         </div>
       </header>
 

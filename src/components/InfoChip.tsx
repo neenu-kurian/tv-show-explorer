@@ -1,7 +1,4 @@
-type InfoChipProps = {
-  label: string;
-  value?: string | null;
-};
+import type { InfoChipProps } from "@/types/components";
 
 export function InfoChip({ label, value }: InfoChipProps) {
   return (

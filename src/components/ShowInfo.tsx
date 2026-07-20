@@ -3,11 +3,7 @@ import { htmlToText } from "@/shared/htmlToText";
 import { ShowPoster } from "@/components/ShowPoster";
 import { ShowRating } from "@/components/ShowRating";
 import { InfoChip } from "@/components/InfoChip";
-import type { Show } from "@/types/show";
-
-type ShowInfoProps = {
-  show: Show;
-};
+import type { ShowInfoProps } from "@/types/components";
 
 export function ShowInfo({ show }: ShowInfoProps) {
   const summaryText = htmlToText(show.summary ?? "No description available");
@@ -15,7 +11,7 @@ export function ShowInfo({ show }: ShowInfoProps) {
 
   return (
     <div className="gap-6 p-5 md:flex">
-      <div className="relative mx-auto aspect-poster shrink-0 overflow-hidden rounded-xl shadow-lg md:max-w-80">
+      <div className="relative mx-auto aspect-poster shrink-0 overflow-hidden rounded-xl shadow-lg md:w-80">
         <ShowPoster src={show.image?.original} alt={show.name ?? "Show Poster"} loading="eager">
           <div className="flex h-full w-full items-center justify-center bg-gray-100">
             <PhotoIcon className="h-1/3 w-1/3" role="img" aria-label="No Image Available" />

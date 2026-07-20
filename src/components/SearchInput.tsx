@@ -1,11 +1,5 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-
-type SearchInputProps = {
-  value: string;
-  onChange: (value: string) => void;
-  onSubmit: (value?: string) => void;
-  placeholder?: string;
-};
+import type { SearchInputProps } from "@/types/components";
 
 export function SearchInput({ value, onChange, onSubmit, placeholder = "Search for TV shows..." }: SearchInputProps) {
   return (

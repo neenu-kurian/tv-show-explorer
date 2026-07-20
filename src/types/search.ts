@@ -7,8 +7,3 @@ export type SearchResultProps = {
   searchError: string | null;
   loading: boolean;
 };
-
-export type ShowSearchResult = {
-  score: number;
-  show: Show;
-};

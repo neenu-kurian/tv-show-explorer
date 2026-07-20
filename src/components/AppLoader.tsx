@@ -1,6 +1,4 @@
-type AppLoaderProps = {
-  message?: string;
-};
+import type { AppLoaderProps } from "@/types/components";
 
 export function AppLoader({ message = "Loading..." }: AppLoaderProps) {
   return (

@@ -1,10 +1,6 @@
 import { UserIcon } from "@heroicons/react/24/outline";
 import { ShowPoster } from "@/components/ShowPoster";
-import type { CastMember } from "@/types/cast";
-
-type CastMemberProps = {
-  member: CastMember;
-};
+import type { CastMemberProps } from "@/types/components";
 
 export function CastMemberComponent({ member }: CastMemberProps) {
   return (

@@ -1,13 +1,6 @@
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import type { SortOption } from "@/types/components";
+import type { SortDropdownProps } from "@/types/components";
 import type { SortBy } from "@/types/show";
-
-type SortDropdownProps = {
-  value: SortBy;
-  options: readonly SortOption[];
-  onChange: (value: SortBy) => void;
-  className?: string;
-};
 
 export function SortDropdown({ value, options, onChange, className }: SortDropdownProps) {
   return (

@@ -1,13 +1,7 @@
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import { AppLoader } from "@/components/AppLoader";
 import { ShowCard } from "@/components/ShowCard";
-import type { CategorizedShows } from "@/types/show";
-
-type ShowCatalogProps = {
-  loading: boolean;
-  error: string | null;
-  catalogData: CategorizedShows;
-};
+import type { ShowCatalogProps } from "@/types/components";
 
 export function ShowCatalog({ loading, error, catalogData }: ShowCatalogProps) {
   if (loading) {

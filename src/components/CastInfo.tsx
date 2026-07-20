@@ -1,13 +1,7 @@
 import { AppLoader } from "@/components/AppLoader";
 import { CastMemberComponent } from "@/components/CastMember";
 import { MAX_CAST_MEMBERS_TO_DISPLAY } from "@/constants";
-import type { CastMember } from "@/types/cast";
-
-type CastInfoProps = {
-  cast: CastMember[];
-  castError: string | null;
-  castLoading: boolean;
-};
+import type { CastInfoProps } from "@/types/components";
 
 export function CastInfo({ cast, castError, castLoading }: CastInfoProps) {
   const castToDisplay = cast.slice(0, MAX_CAST_MEMBERS_TO_DISPLAY);

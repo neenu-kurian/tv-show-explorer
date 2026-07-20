@@ -2,11 +2,7 @@ import Link from "next/link";
 import { PhotoIcon } from "@heroicons/react/24/outline";
 import { ShowPoster } from "@/components/ShowPoster";
 import { ShowRating } from "@/components/ShowRating";
-import type { Show } from "@/types/show";
-
-type ShowCardProps = {
-  show: Show;
-};
+import type { ShowCardProps } from "@/types/components";
 
 export function ShowCard({ show }: ShowCardProps) {
   return (

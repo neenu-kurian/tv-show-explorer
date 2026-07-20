@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef } from "react";
 import { SEARCH_TIMEOUT } from "@/constants";
 import { getErrorMessage } from "@/shared/errorMapper";
-import { searchShowsApi } from "@/services/search";
+import { searchShows } from "@/services/search";
 import { useSearchStore } from "@/providers/SearchStoreProvider";
 
 export function useDebouncedSearch() {
@@ -15,12 +15,14 @@ export function useDebouncedSearch() {
   const searchLoading = useSearchStore((state) => state.searchLoading);
   const hasSearched = useSearchStore((state) => state.hasSearched);
   const searchError = useSearchStore((state) => state.searchError);
-  const setSearchQuery = useSearchStore((state) => state.setSearchQuery);
-  const setSearchResult = useSearchStore((state) => state.setSearchResult);
-  const setSearchLoading = useSearchStore((state) => state.setSearchLoading);
-  const setHasSearched = useSearchStore((state) => state.setHasSearched);
-  const setSearchError = useSearchStore((state) => state.setSearchError);
-  const clearSearch = useSearchStore((state) => state.clearSearch);
+  const {
+    setSearchQuery,
+    setSearchResult,
+    setSearchLoading,
+    setHasSearched,
+    setSearchError,
+    clearSearch,
+  } = useSearchStore((state) => state.actions);
 
   const cancelPending = () => {
     if (timeoutRef.current) {
@@ -48,17 +50,10 @@ export function useDebouncedSearch() {
       setSearchError(null);
       const controller = new AbortController();
       abortRef.current = controller;
-
-      const result = await searchShowsApi(trimmedQuery, controller.signal);
+      const result = await searchShows(trimmedQuery, controller.signal);
       if (controller.signal.aborted) return;
-
-      if (!result.ok) {
-        setSearchResult(result);
-        setSearchError(getErrorMessage(result.error));
-      } else {
-        setSearchResult({ ok: true, data: result.data.map((item) => item.show) });
-      }
-
+      setSearchResult(result);
+      setSearchError(result.ok ? null : getErrorMessage(result.error));
       setSearchLoading(false);
       setHasSearched(true);
     }, SEARCH_TIMEOUT);
@@ -77,14 +72,6 @@ export function useDebouncedSearch() {
 
   return {
     searchQuery,
-    setSearchQuery: (value: string) => {
-      setSearchQuery(value);
-      if (value.trim() === "") {
-        clearSearch();
-        return;
-      }
-      handleSearch(value);
-    },
     searchLoading,
     hasSearched,
     searchError,

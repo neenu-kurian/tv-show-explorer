@@ -39,19 +39,13 @@
     "src/components/**/*.tsx",
     "src/hooks/**/*.ts",
     "src/hooks/**/*.tsx",
+    "src/providers/**/*.ts",
+    "src/providers/**/*.tsx",
     "src/services/**/*.ts",
     "src/shared/**/*.ts",
+    "src/stores/**/*.ts",
     "src/types/**/*.ts",
     ".next/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "src/main.ts",
-    "src/App.vue",
-    "src/router/**",
-    "src/views/**",
-    "src/stores/**",
-    "src/composables/**",
-    "tests/**"
-  ]
+  "exclude": ["node_modules"]
 }

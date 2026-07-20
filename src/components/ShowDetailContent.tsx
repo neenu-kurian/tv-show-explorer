@@ -1,14 +1,6 @@
 import { CastInfo } from "@/components/CastInfo";
 import { ShowInfo } from "@/components/ShowInfo";
-import type { CastMember } from "@/types/cast";
-import type { Show } from "@/types/show";
-
-type ShowDetailContentProps = {
-  show: Show;
-  cast: CastMember[];
-  castError: string | null;
-  castLoading: boolean;
-};
+import type { ShowDetailContentProps } from "@/types/components";
 
 export function ShowDetailContent({ show, cast, castError, castLoading }: ShowDetailContentProps) {
   return (

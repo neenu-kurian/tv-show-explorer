@@ -1,25 +1,19 @@
 "use client";
 
-import { type ReactNode, createContext, useContext, useEffect, useRef } from "react";
+import { type ReactNode, createContext, useContext, useState } from "react";
 import { useStore } from "zustand";
-import { createCatalogStore, type CatalogStore } from "@/stores/catalogStore";
+import { createCatalogStore } from "@/stores/catalogStore";
+import type { CatalogStore } from "@/types/store";
 
 type CatalogStoreApi = ReturnType<typeof createCatalogStore>;
 
 const CatalogStoreContext = createContext<CatalogStoreApi | null>(null);
 
 export function CatalogStoreProvider({ children }: { children: ReactNode }) {
-  const storeRef = useRef<CatalogStoreApi | null>(null);
-  if (!storeRef.current) {
-    storeRef.current = createCatalogStore();
-  }
-
-  useEffect(() => {
-    storeRef.current?.persist.rehydrate();
-  }, []);
+  const [store] = useState(() => createCatalogStore());
 
   return (
-    <CatalogStoreContext.Provider value={storeRef.current}>
+    <CatalogStoreContext.Provider value={store}>
       {children}
     </CatalogStoreContext.Provider>
   );
