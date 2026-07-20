@@ -8,9 +8,9 @@ import { SortDropdown } from "@/components/SortDropdown";
 import { useCatalog } from "@/hooks/useCatalog";
 import { useDebouncedSearch } from "@/hooks/useDebouncedSearch";
 import { sortOptions } from "@/constants";
-import type { HomePageClientProps } from "@/types/components";
+import type { HomePageProps } from "@/types/components";
 
-export function HomePageClient({ catalogData, error }: HomePageClientProps) {
+export function HomePage({ catalogData, error }: HomePageProps) {
   const { catalogData: sortedCatalogData, sortBy, setSortBy } = useCatalog(catalogData);
   const { searchQuery, searchLoading, hasSearched, searchError, shows, handleSearch } =
     useDebouncedSearch();

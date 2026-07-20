@@ -74,7 +74,7 @@ export type SortDropdownProps = {
   className?: string;
 };
 
-export type HomePageClientProps = {
+export type HomePageProps = {
   catalogData: CategorizedShows;
   error: string | null;
 };

@@ -12,7 +12,7 @@ type ShowDetailPageProps = {
 
 export default async function ShowDetailPage({ params }: ShowDetailPageProps) {
   const id = Number(params.id);
-  const showResult = await fetchShowData(id, undefined, 3600);
+  const showResult = await fetchShowData(id, 3600);
 
   if (!showResult.ok) {
     if (showResult.error.type === "NOT_FOUND") {

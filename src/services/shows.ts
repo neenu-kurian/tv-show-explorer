@@ -5,16 +5,15 @@ import type { Result } from "@/types/result";
 import type { Show } from "@/types/show";
 import { apiFetch } from "./http";
 
-export async function fetchShows(signal?: AbortSignal, revalidate?: number): Promise<Result<Show[]>> {
-  const response = await apiFetch(`${API_URL}/shows`, signal, revalidate);
+export async function fetchShows(revalidate?: number): Promise<Result<Show[]>> {
+  const response = await apiFetch(`${API_URL}/shows`, undefined, revalidate);
   return parseWith(response, ShowListDtoSchema);
 }
 
 export async function fetchShowData(
   id: number,
-  signal?: AbortSignal,
   revalidate?: number,
 ): Promise<Result<Show>> {
-  const response = await apiFetch(`${API_URL}/shows/${id}`, signal, revalidate);
+  const response = await apiFetch(`${API_URL}/shows/${id}`, undefined, revalidate);
   return parseWith(response, ShowDtoSchema);
 }

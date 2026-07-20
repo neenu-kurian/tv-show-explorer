@@ -9,7 +9,7 @@ import { useSearchStore } from "@/providers/SearchStoreProvider";
 export function useDebouncedSearch() {
   const timeoutRef = useRef<number | null>(null);
   const abortRef = useRef<AbortController | null>(null);
-
+  
   const searchQuery = useSearchStore((state) => state.searchQuery);
   const searchResult = useSearchStore((state) => state.searchResult);
   const searchLoading = useSearchStore((state) => state.searchLoading);
